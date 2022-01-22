@@ -5,7 +5,9 @@ const { saveDB, readDB } = require('./helpers/fileTools');
 const {
     inquirerMenu,
     pause,
-    readInput
+    readInput,
+    deleteTaskList,
+    confirm
 } = require('./helpers/inquirer');
 const Task = require('./models/Task');
 const Tasks = require('./models/Tasks');
@@ -31,7 +33,25 @@ const main = async () => {
                 console.log(desc);
                 break;
             case '2':
-                console.log(tasks.listArray);
+                tasks.allTasks();
+
+                break;
+            case '3':
+                tasks.statusList(true)
+                break;
+            case '4':
+                tasks.statusList(false)
+                break;
+            case '5':
+
+                break;
+            case '6':
+                const deleteId = await deleteTaskList(tasks.listArray);
+                const ok = await confirm('Are you sure to delete this task?');
+                if (ok) {
+                    tasks.deleteTask(deleteId)
+                    console.log(`${deleteId} has been deleted`);
+                }
                 break;
 
             default:

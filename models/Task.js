@@ -3,7 +3,7 @@ class Task {
 
     id = '';
     desc = '';
-    completedion = null;
+    completed = null;
 
     constructor(desc) {
         this.id = uuidv4();

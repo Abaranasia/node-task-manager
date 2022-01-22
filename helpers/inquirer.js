@@ -17,7 +17,7 @@ const menuOptions = [  //Menu for consoleoptions
             },
             {
                 value: '3',
-                name: `${'3.'.yellow} List finished tasks`
+                name: `${'3.'.yellow} List completed tasks`
             },
             {
                 value: '4',
@@ -80,8 +80,50 @@ const readInput = async (message) => {
     return desc;
 };
 
+const deleteTaskList = async (tasks = []) => {
+
+    const choices = tasks.map((task, i) => {
+        const idx = `${i + 1}. `.green;
+
+        return {
+            value: task.id,
+            name: `${idx} ${task.desc}`
+        };
+    });
+
+    const questions = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'delete',
+            choices
+        }
+    ]
+    const { id } = await inquirer.prompt(questions);
+    console.log("deleteId", id);
+    return id;
+};
+
+const confirm = async (message) => {
+
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ];
+
+    const { ok } = await inquirer.prompt(question);
+    return ok
+
+};
+
+
 module.exports = {
     inquirerMenu,
     pause,
-    readInput
+    readInput,
+    deleteTaskList,
+    confirm
 }

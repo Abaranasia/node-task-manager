@@ -2,21 +2,21 @@
     {
         "id": "45819737-d1fd-4ce6-95c7-34abd9efe4d2",
         "desc": "Cortar madera",
-        "completedion": null
+        "completed": "21/01/2022"
     },
     {
         "id": "79d001de-ff89-4492-9921-d3d72fcb1c32",
         "desc": "Picar piedra",
-        "completedion": null
+        "completed": "22/01/2022"
     },
     {
         "id": "81c2082f-5d0e-4f2f-99f2-713e6be3e7e2",
         "desc": "Construir pico",
-        "completedion": null
+        "completed": null
     },
     {
         "id": "2c1fd286-2fcc-43db-b742-2e5bf7afb772",
         "desc": "Construir mesa de crafteo",
-        "completedion": null
+        "completed": null
     }
 ]
