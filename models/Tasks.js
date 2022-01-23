@@ -52,6 +52,21 @@ class Tasks {
         if (this._list[id]) {
             delete this._list[id];
         }
+    };
+
+    toggleStatus(ids = []) {
+        ids.forEach(id => {
+            const task = this._list[id];
+            if (!task.completed) {
+                task.completed = new Date().toISOString()
+            }
+
+            this.listArray.forEach(task => {
+                if (!ids.includes(task.id)) {
+                    task.completed = null
+                }
+            })
+        })
     }
 
 };

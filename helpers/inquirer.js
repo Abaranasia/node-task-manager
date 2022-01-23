@@ -40,7 +40,6 @@ const menuOptions = [  //Menu for consoleoptions
 ]
 
 const inquirerMenu = async () => {
-
     console.clear();
     console.log('================================'.green);
     console.log('        SELECT AN OPTION        '.yellow);
@@ -81,7 +80,6 @@ const readInput = async (message) => {
 };
 
 const deleteTaskList = async (tasks = []) => {
-
     const choices = tasks.map((task, i) => {
         const idx = `${i + 1}. `.green;
 
@@ -104,8 +102,31 @@ const deleteTaskList = async (tasks = []) => {
     return id;
 };
 
-const confirm = async (message) => {
+const checkingTasks = async (tasks = []) => {
+    const choices = tasks.map((task, i) => {
+        const idx = `${i + 1}. `.green;
 
+        return {
+            value: task.id,
+            name: `${idx} ${task.desc}`,
+            checked: (task.completed) ? true : false
+        };
+    });
+
+    const questions = [
+        {
+            type: 'checkbox',
+            name: 'ids',
+            message: 'select',
+            choices
+        }
+    ]
+    const { ids } = await inquirer.prompt(questions);
+    return ids;
+};
+
+
+const confirm = async (message) => {
     const question = [
         {
             type: 'confirm',
@@ -116,14 +137,13 @@ const confirm = async (message) => {
 
     const { ok } = await inquirer.prompt(question);
     return ok
-
 };
-
 
 module.exports = {
     inquirerMenu,
     pause,
     readInput,
     deleteTaskList,
+    checkingTasks,
     confirm
 }
